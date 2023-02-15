@@ -47,7 +47,7 @@ const Auth = () => {
     }
   };
 
-  const toggleAccount = () => setNewAccount((prev) => !prev);
+  const toggleAccount = () => setNewAccount((prev) => !prev); // True, False 이용하여 setNewAccount 반전
 
   const onSocialClick = async (event) => {
     const {
@@ -88,9 +88,9 @@ const Auth = () => {
         <input type="submit" value={newAccount ? "Create Account" : "Log In"} />
         {error}
       </form>
-      {/* onClick 이벤트를 추가 */}
+      {/* onClick 이벤트를 toggleAccount로 추가 */}
       <span onClick={toggleAccount}>
-        {/* 로그인과 회원가입을 onClick 이벤트로 변경 */}
+        {/* 로그인과 회원가입을 toggleAccount로 추가한 onClick 이벤트로 변경 */}
         {newAccount ? "Sign in" : "Create Account"}
       </span>
       <div>
