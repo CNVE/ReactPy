@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/https//CNVE.github.io/ReactPy/static/css/main.ff37f1a6.css",
+    "main.js": "/https//CNVE.github.io/ReactPy/static/js/main.79a4669a.js",
+    "index.html": "/https//CNVE.github.io/ReactPy/index.html",
+    "main.ff37f1a6.css.map": "/https//CNVE.github.io/ReactPy/static/css/main.ff37f1a6.css.map",
+    "main.79a4669a.js.map": "/https//CNVE.github.io/ReactPy/static/js/main.79a4669a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ff37f1a6.css",
+    "static/js/main.79a4669a.js"
+  ]
+}
