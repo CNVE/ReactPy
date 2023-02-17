@@ -6,14 +6,22 @@ import {
   onSnapshot,
   orderBy,
 } from "firebase/firestore"; // firebase 버전 업데이트
-import { dbService } from "firebaseMain";
+import {
+  getDownloadURL,
+  ref,
+  uploadBytes,
+  uploadString,
+} from "firebase/storage";
+import { dbService, storageService } from "firebaseMain";
 import React, { useEffect, useState } from "react";
+import { v4 } from "uuid";
 
 const Home = ({ userObj }) => {
-  console.log(userObj);
+  //console.log(userObj);
   const [twit, setTwit] = useState(""); //text 입력란 제어
   const [twits, setTwits] = useState([]); //firebase 저장 값 제어
-  console.log(twits);
+  const [fileURL, setFileURL] = useState("");
+  //console.log(twits);
 
   /*const getTwits = async () => {
     const q = await getDocs(collection(dbService, "Twit"));
@@ -42,35 +50,66 @@ const Home = ({ userObj }) => {
       }
     );
   };
+
   useEffect(() => {
     real();
   }, []);
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const docRef = addDoc(collection(dbService, "Twit"), {
-        text: twit,
-        createAt: Date.now(),
-        creatorId: userObj.uid,
-      });
-      setTwit(""); // Submit시 text란 비우기 But 동작 안함
-      console.log("Document written with ID: ", docRef.id);
-    } catch (error) {
-      console.log(error.message);
+    let attch = "";
+    if (fileURL !== "") {
+      const fileRef = ref(storageService, `${userObj.uid}/${v4()}`);
+      const response = await uploadString(fileRef, fileURL, "data_url");
+      attch = await getDownloadURL(response.ref);
     }
+
+    const docRef = addDoc(collection(dbService, "Twit"), {
+      text: twit,
+      createAt: Date.now(),
+      creatorId: userObj.uid,
+      attch,
+    });
+    setTwit(""); // Submit시 text란 비우기 But 동작 안함
+    setFileURL("");
+    console.log("Document written with ID: ", docRef.id);
   };
+
   const onChange = (event) => {
     const {
       target: { value },
     } = event;
     setTwit(value);
   };
+
+  const onFileChange = (event) => {
+    const {
+      target: { files },
+    } = event;
+    const theFiles = files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(theFiles);
+    reader.onloadend = (finishedEvent) => {
+      const {
+        currentTarget: { result },
+      } = finishedEvent;
+      setFileURL(result);
+    };
+  };
+
+  const onClearPhto = () => setFileURL(null);
   return (
     <div>
       <form onSubmit={onSubmit}>
         <input type="text" placeholder="Please typing" onChange={onChange} />
+        <input type="file" accept="image/*" onChange={onFileChange} />
         <input type="submit" value="Twit" />
+        {fileURL && (
+          <div>
+            <img src={fileURL} width="50px" height="50px" />
+            <button onClick={onClearPhto}>Clear file</button>
+          </div>
+        )}
       </form>
       <div>
         {twits.map((nweet) => (

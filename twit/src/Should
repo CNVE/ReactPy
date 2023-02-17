@@ -6,3 +6,16 @@ collection(1,2) 사용시 1번은
 import { getFirestore } from "firebase/firestore"; firestore에서 부터 값을 얻어 올 수 있는 getFirestore()를 const변수에 담아 export한 변수 이름 넣기
 2번의 경우 데이터베이스와 연결 부분이기 때문에 데이터베이스 명을 작성해야함
 5. prev사용시 ...사용 여부 꼭 확인하기
+6. props값 전달시 이름 헷갈림 props 전달 방법 숙지 가능하면 Redux도 사용해보기
+ 
+const twitbase = {
+      text: twit,
+      createAt: Date.now(),
+      creatorId: userObj.uid,
+      attch,
+    };
+    const docRef = addDoc(collection(dbService, "Twit"), { twitbase });
+    setTwit(""); // Submit시 text란 비우기 But 동작 안함
+    setFileURL("");
+    console.log("Document written with ID: ", twitbase.id);
+    console.log(docRef);
