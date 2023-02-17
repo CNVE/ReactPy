@@ -1,4 +1,5 @@
 import Nweet from "components/Nweet";
+import Nweetfactory from "components/Nweetfactory";
 import {
   collection,
   addDoc,
@@ -99,19 +100,9 @@ const Home = ({ userObj }) => {
 
   const onClearPhto = () => setFileURL(null);
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <input type="text" placeholder="Please typing" onChange={onChange} />
-        <input type="file" accept="image/*" onChange={onFileChange} />
-        <input type="submit" value="Twit" />
-        {fileURL && (
-          <div>
-            <img src={fileURL} width="50px" height="50px" />
-            <button onClick={onClearPhto}>Clear file</button>
-          </div>
-        )}
-      </form>
-      <div>
+    <div className="container">
+      <Nweetfactory userObj={userObj} />
+      <div style={{ marginTop: 30 }}>
         {twits.map((nweet) => (
           <Nweet
             key={nweet.id}

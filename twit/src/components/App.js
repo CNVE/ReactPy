@@ -23,6 +23,7 @@ function App() {
       } else {
         //user가 거짓일 때 IsLoggedIn 값 false 반환
         setIsLoggedIn(false);
+        setUserObj(null);
       }
       setInit(true); //로드 완료 확인 => setInit값 True 반환
     });
