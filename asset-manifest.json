@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/ReactPy/static/css/main.ff37f1a6.css",
-    "main.js": "/ReactPy/static/js/main.7d0eb26b.js",
+    "main.js": "/ReactPy/static/js/main.45a78a6a.js",
     "index.html": "/ReactPy/index.html",
     "main.ff37f1a6.css.map": "/ReactPy/static/css/main.ff37f1a6.css.map",
-    "main.7d0eb26b.js.map": "/ReactPy/static/js/main.7d0eb26b.js.map"
+    "main.45a78a6a.js.map": "/ReactPy/static/js/main.45a78a6a.js.map"
   },
   "entrypoints": [
     "static/css/main.ff37f1a6.css",
-    "static/js/main.7d0eb26b.js"
+    "static/js/main.45a78a6a.js"
   ]
 }
