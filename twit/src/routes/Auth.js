@@ -1,15 +1,12 @@
 ////////////////////////////////////////로그인 페이지/////////////////////////////////////////
 import Authform from "components/Authform";
 import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
   GithubAuthProvider,
 } from "firebase/auth"; // Firebase 문법 변경
-import { authService, firebaseInstance } from "firebaseMain";
-import React, { useState } from "react";
+import { authService } from "firebaseMain";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTwitter,

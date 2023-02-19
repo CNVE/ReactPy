@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import { updateProfile } from "firebase/auth";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { authService, dbService } from "firebaseMain";
@@ -26,7 +25,7 @@ const Profile = ({ refreshUser, userObj }) => {
   };
   useEffect(() => {
     getMyTwits();
-  }, []);
+  });
 
   const onChange = (event) => {
     const {

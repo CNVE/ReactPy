@@ -64,6 +64,7 @@ const Authform = () => {
           value={password}
           onChange={onChange}
           className="authInput"
+          autoComplete="off"
         />
         {/* Submit button의 value에 newAccount를 이용한 로그인 구분 */}
         <input

@@ -79,6 +79,7 @@ const Nweetfactory = ({ userObj }) => {
       {fileURL && (
         <div className="factoryForm__attachment">
           <img
+            alt=""
             src={fileURL}
             style={{
               backgroundImage: fileURL,
