@@ -4,11 +4,12 @@ import React, { useState } from "react";
 import SeeTwit from "./GetMyTwit";
 import SettingMy from "./SeeTwit";
 
-const Nweet = ({ nweetObj, isOwner, refreshUser }) => {
+const Nweet = ({ nweetObj, isOwner, refreshUser, userObj }) => {
   const [editing, setEditing] = useState(false);
   const [newTwit, setNewTwit] = useState(nweetObj.text);
   //const [nameUpdated, setNameUpdated] = useState(nweetObj.username);
   const deed = doc(dbService, "Twit", `${nweetObj.id}`);
+  console.log(deed);
   const toggleEditing = () => setEditing((prev) => !prev);
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -47,6 +48,8 @@ const Nweet = ({ nweetObj, isOwner, refreshUser }) => {
           toggleEditing={toggleEditing}
           nweetObj={nweetObj}
           isOwner={isOwner}
+          userObj={userObj}
+          refreshUser={refreshUser}
         />
       )}
     </div>

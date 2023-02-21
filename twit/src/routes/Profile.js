@@ -1,6 +1,13 @@
 import GetMyTwit from "components/GetMyTwit";
 import { updateProfile } from "firebase/auth";
-import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  orderBy,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { authService, dbService } from "firebaseMain";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom"; //react-router-dom의 함수 or Router.js파일에 Redirect 함수를 통해 로그아웃 후 Home 복귀
@@ -13,6 +20,8 @@ const Profile = ({ refreshUser, userObj }) => {
     history.push("/"); //기본 홈으로 돌아가기
     refreshUser();
   };
+
+  let changedata;
   const getMyTwits = async () => {
     const q = query(
       collection(dbService, "Twit"),
@@ -20,9 +29,12 @@ const Profile = ({ refreshUser, userObj }) => {
     );
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
+      updateDoc(dbService, "Twit");
       console.log(doc.id, " == ", doc.data());
     });
   };
+
+  console.log(changedata);
 
   useEffect(() => {
     getMyTwits();
@@ -69,7 +81,6 @@ const Profile = ({ refreshUser, userObj }) => {
         Log Out
       </span>
       <h1>My Twit</h1>
-      {/* <GetMyTwit getMyTwits={getMyTwits} /> */}
     </div>
   );
 };
