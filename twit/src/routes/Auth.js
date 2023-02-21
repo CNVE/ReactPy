@@ -18,14 +18,16 @@ const Auth = () => {
   const onSocialClick = async (event) => {
     const {
       currentTarget: { name },
-    } = event;
-    let provider;
+    } = event; // event.target.name과 같은 의미
+    let provider; // 변수 provider 선언
     if (name === "Google") {
-      provider = new GoogleAuthProvider();
+      // 이름이 Google이라면
+      provider = new GoogleAuthProvider(); //provider에 GoogleAuthProvider 대입
     } else if (name === "Github") {
-      provider = new GithubAuthProvider();
+      // 아니고 만약 이름이 Github이라면
+      provider = new GithubAuthProvider(); //provider에 GithubAuthProvider 대입
     }
-    const data = await signInWithPopup(authService, provider);
+    const data = await signInWithPopup(authService, provider); // if문 실행 뒤 data 변수에 구글인지 깃헙인지 로그인 서비스에 알려줌
     console.log(data);
   };
   return (

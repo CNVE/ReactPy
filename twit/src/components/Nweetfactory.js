@@ -23,10 +23,11 @@ const Nweetfactory = ({ userObj }) => {
       createAt: Date.now(),
       creatorId: userObj.uid,
       attch,
+      username: userObj.displayName,
     });
     setTwit(""); // Submit시 text란 비우기 But 동작 안함
     setFileURL("");
-    console.log("Document written with ID: ", docRef.id);
+    console.log("Document written with ID: ", (await docRef).id);
   };
 
   const onChange = (event) => {
@@ -39,8 +40,8 @@ const Nweetfactory = ({ userObj }) => {
   const onFileChange = (event) => {
     const {
       target: { files },
-    } = event;
-    const theFiles = files[0];
+    } = event; //event.target.files
+    const theFiles = files[0]; //files 배열 생성
     const reader = new FileReader();
     reader.readAsDataURL(theFiles);
     reader.onloadend = (finishedEvent) => {
@@ -51,7 +52,8 @@ const Nweetfactory = ({ userObj }) => {
     };
   };
 
-  const onClearPhto = () => setFileURL("");
+  const onClearPhto = () => setFileURL(""); // 사진 지우기
+
   return (
     <form onSubmit={onSubmit} className="factoryForm">
       <div className="factoryInput__container">
@@ -60,9 +62,11 @@ const Nweetfactory = ({ userObj }) => {
           placeholder="Please typing"
           onChange={onChange}
           className="factoryInput__input"
+          value={twit}
         />
         <input type="submit" value="&rarr;" className="factoryInput__arrow" />
       </div>
+
       <label htmlFor="attach-file" className="factoryInput__label">
         <span>Add photos</span>
         <FontAwesomeIcon icon={faPlus} />

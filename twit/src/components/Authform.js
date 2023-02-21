@@ -14,14 +14,14 @@ const Authform = () => {
   const onSubmit = async (event) => {
     event.preventDefault(); // Submit의 기본 동작을 억제(기본 동작: Submit시 Page Refresh)
     try {
-      let data; //이메일 or 비밀번호를 저장
+      let signdata, logdata; //이메일 or 비밀번호를 저장
       const auth = getAuth(); //Firebase 업데이트로 인해 달라진 문법
       if (newAccount) {
-        data = await createUserWithEmailAndPassword(auth, email, password);
+        signdata = await createUserWithEmailAndPassword(auth, email, password);
       } else {
-        data = await signInWithEmailAndPassword(auth, email, password);
+        logdata = await signInWithEmailAndPassword(auth, email, password);
       }
-      console.log(data); // 로그인시 콘솔창에 포시
+      console.log("Sign?", signdata, "Log?", logdata); // 로그인시 콘솔창에 포시
     } catch (error) {
       //에러시
       setError(error.message); // setError조정하여 error message 제어

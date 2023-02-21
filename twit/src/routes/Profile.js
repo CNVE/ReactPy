@@ -1,3 +1,4 @@
+import GetMyTwit from "components/GetMyTwit";
 import { updateProfile } from "firebase/auth";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { authService, dbService } from "firebaseMain";
@@ -15,14 +16,14 @@ const Profile = ({ refreshUser, userObj }) => {
   const getMyTwits = async () => {
     const q = query(
       collection(dbService, "Twit"),
-      where("creatorId", "==", userObj.uid),
-      orderBy("createdAt", "desc")
+      where("creatorId", "==", userObj.uid)
     );
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data());
+      console.log(doc.id, " == ", doc.data());
     });
   };
+
   useEffect(() => {
     getMyTwits();
   });
@@ -67,6 +68,8 @@ const Profile = ({ refreshUser, userObj }) => {
       <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
         Log Out
       </span>
+      <h1>My Twit</h1>
+      {/* <GetMyTwit getMyTwits={getMyTwits} /> */}
     </div>
   );
 };

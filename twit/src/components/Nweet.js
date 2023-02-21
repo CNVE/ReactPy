@@ -1,23 +1,14 @@
-import { deleteDoc, doc, updateDoc } from "firebase/firestore";
-import { deleteObject, ref } from "firebase/storage";
-import { dbService, storageService } from "firebaseMain";
+import { doc, updateDoc } from "firebase/firestore";
+import { dbService } from "firebaseMain";
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import SeeTwit from "./GetMyTwit";
+import SettingMy from "./SeeTwit";
 
-const Nweet = ({ nweetObj, isOwner }) => {
+const Nweet = ({ nweetObj, isOwner, refreshUser }) => {
   const [editing, setEditing] = useState(false);
   const [newTwit, setNewTwit] = useState(nweetObj.text);
+  //const [nameUpdated, setNameUpdated] = useState(nweetObj.username);
   const deed = doc(dbService, "Twit", `${nweetObj.id}`);
-  const onDeleteClick = async () => {
-    const ok = window.confirm("Delete?");
-    console.log(ok);
-    if (ok === true) {
-      await deleteDoc(deed);
-      const urlRef = ref(storageService, nweetObj.attch);
-      await deleteObject(urlRef);
-    }
-  };
   const toggleEditing = () => setEditing((prev) => !prev);
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -51,20 +42,12 @@ const Nweet = ({ nweetObj, isOwner }) => {
           </span>
         </>
       ) : (
-        <>
-          <h4>{nweetObj.text}</h4>
-          {nweetObj.attch && <img src={nweetObj.attch} alt="" />}
-          {isOwner && (
-            <div class="nweet__actions">
-              <span onClick={onDeleteClick}>
-                <FontAwesomeIcon icon={faTrash} />
-              </span>
-              <span onClick={toggleEditing}>
-                <FontAwesomeIcon icon={faPencilAlt} />
-              </span>
-            </div>
-          )}
-        </>
+        <SeeTwit
+          deed={deed}
+          toggleEditing={toggleEditing}
+          nweetObj={nweetObj}
+          isOwner={isOwner}
+        />
       )}
     </div>
   );

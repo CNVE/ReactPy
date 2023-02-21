@@ -6,15 +6,17 @@ import { authService } from "firebaseMain";
 function App() {
   const [init, setInit] = useState(false); // 페이지 로드 확인 ex) 로드 전까지 Initializing... 표시, 로드 후 Home 보이기
   const [isLoggedIn, setIsLoggedIn] = useState(false); //로그인 여부 확인
-  const [userObj, setUserObj] = useState("");
+  const [userObj, setUserObj] = useState(""); // user값 받아서 사용할 때 사용
   useEffect(() => {
     //한번 실행
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
+      // auth의 상태가 변했을때
       if (user) {
         //user가 진실일 때 IsLoggedIn 값 True 반환
         setIsLoggedIn(true);
         setUserObj({
+          // setUserObj값에 필요한 user값 저장, 전체 user값 사용시 범위가 넓어 에러 발생
           displayName: user.displayName,
           uid: user.uid,
           updateProfile: (args) =>
@@ -22,8 +24,8 @@ function App() {
         });
       } else {
         //user가 거짓일 때 IsLoggedIn 값 false 반환
-        setIsLoggedIn(false);
-        setUserObj(null);
+        setIsLoggedIn(false); //실행x
+        setUserObj(null); //실행x
       }
       setInit(true); //로드 완료 확인 => setInit값 True 반환
     });
