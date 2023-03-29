@@ -80,7 +80,9 @@ const Profile = ({ refreshUser, userObj }) => {
       <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
         Log Out
       </span>
-      <h1>My Twit</h1>
+      <div className="factoryInput__container">
+      <input type="submit" value="&rarr;" className="factoryInput__arrow" />
+      </div>
     </div>
   );
 };

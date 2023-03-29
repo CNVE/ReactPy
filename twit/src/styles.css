@@ -1,13 +1,25 @@
 @import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
+@import "./styles.css";
 
 * {
   box-sizing: border-box;
+}
+
+.titlel {
+  font-family : 'Lora';
+  font-size: 50px;
 }
 
 input {
   all: unset;
   box-sizing: border-box;
   appearance: none;
+}
+
+title{
+  font-size: 500px;
+  color: white;
+  margin-left: 20%;
 }
 
 body {
@@ -21,6 +33,7 @@ body {
 button {
   background-color: white;
   color: black;
+
 }
 
 a {
@@ -83,7 +96,6 @@ form {
 .logOut {
   margin-top: 50px;
 }
-
 /* Nwitter Factory */
 
 .factoryForm {
@@ -101,6 +113,7 @@ form {
   position: relative;
   margin-bottom: 20px;
   width: 100%;
+ 
 }
 
 .factoryInput__input {
@@ -124,6 +137,18 @@ form {
   text-align: center;
   border-radius: 20px;
   color: white;
+}
+
+input:hover~ .authInput.authSubmit {
+  right: 0;
+  background-color: #04aaff;
+  height: 40px;
+  width: 100px;
+  padding: 10px 0px;
+  text-align: center;
+  border-radius: 20px;
+  color: white;
+  transition-property: all
 }
 
 .factoryInput__label {
@@ -255,7 +280,7 @@ form {
   background: #04aaff;
   color: white;
   margin-top: 10;
-  cursor: pointer;
+  transition: 4s;
 }
 
 .authError {

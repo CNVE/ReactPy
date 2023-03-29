@@ -13,6 +13,7 @@ import {
   faGoogle,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
+import "Fonts/Fonts.css";
 
 const Auth = () => {
   const onSocialClick = async (event) => {
@@ -31,13 +32,15 @@ const Auth = () => {
     console.log(data);
   };
   return (
+ 
     <div className="authContainer">
       <FontAwesomeIcon
         icon={faTwitter}
         color={"#04AAFF"}
         size="3x"
-        style={{ marginBottom: 30 }}
+        style={{ marginBottom: 20 }}
       />
+      <div className="titlel" style={{marginBottom: 20, fontSize :30}}>Twitter</div>
       <Authform />
       <div className="authBtns">
         {/* 다른 매체를 이용한 로그인수단 */}

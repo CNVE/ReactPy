@@ -56,3 +56,6 @@ function App() {
 }
 
 export default App;
+
+
+// 유저 오브젝트 확인, 리네임시 Twit 값에는 변화가 보이지 않음

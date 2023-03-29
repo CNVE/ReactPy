@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { dbService, storageService } from "firebaseMain";
 import { deleteObject, ref } from "firebase/storage";
 import { collection, deleteDoc, onSnapshot } from "firebase/firestore";
+
 
 const SeeTwit = ({
   deed,
@@ -22,28 +23,13 @@ const SeeTwit = ({
       await deleteObject(urlRef);
     }
   };
+
   /* if (nweetObj.username !== userObj.displayName) {
     refreshUser();
     console.log(nweetObj.username);
   } else {
     console.log("Error");
   } */
-
-  const updateTwitBy = () => {
-    // snapshot이 실시간으로 firebase의 Twit이란 이름의 collection의 변화 감지
-    onSnapshot(
-      collection(dbService, "Twit"), // collection에 있는 Twit 감시
-      (snapshot) => {
-        // snapshot이 변화 감지시
-        const updateTwitByArray = snapshot.docs.map((docs) => ({
-          id: docs.id, //id값 저장
-          ...docs.data(), // 표시할 데이터 값
-        }));
-        nweetObj(updateTwitByArray);
-        console.log(updateTwitByArray); // Twit의 저장값 변화 부분에 대입
-      }
-    );
-  };
 
   return (
     <>
