@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import AppRouter from "components/Router";
 import { getAuth, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { authService } from "firebaseMain";
+import { CSSTransition } from "react-transition-group";
+import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
   const [init, setInit] = useState(false); // 페이지 로드 확인 ex) 로드 전까지 Initializing... 표시, 로드 후 Home 보이기
   const [isLoggedIn, setIsLoggedIn] = useState(false); //로그인 여부 확인
   const [userObj, setUserObj] = useState(""); // user값 받아서 사용할 때 사용
+
   useEffect(() => {
     //한번 실행
     const auth = getAuth();
@@ -39,9 +42,12 @@ function App() {
         updateProfile(user, { displayName: user.displayName }),
     });
   };
+
   return (
+    
     <>
       {/* 로드 완료시 AppRouter 표시, 완료X => Initializing...표시 */}
+      <Router>
       {init ? (
         <AppRouter
           refreshUser={refreshUser}
@@ -51,6 +57,7 @@ function App() {
       ) : (
         "Initializing..."
       )}
+      </Router>
     </>
   );
 }

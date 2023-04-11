@@ -70,9 +70,11 @@ const Authform = () => {
         <input
           type="submit"
           className="authInput authSubmit"
+          style = {{ textAlign: "center" }}
           value={newAccount ? "Create Account" : "Log In"}
         />
         {error && <span className="authError">{error}</span>}
+        {/* 에러 메시지 if 문을 이용하여 한글 메시지 띄우기 */}
       </form>
       {/* onClick 이벤트를 toggleAccount로 추가 */}
       <span onClick={toggleAccount} className="authSwitch">

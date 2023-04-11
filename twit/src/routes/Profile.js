@@ -81,7 +81,6 @@ const Profile = ({ refreshUser, userObj }) => {
         Log Out
       </span>
       <div className="factoryInput__container">
-      <input type="submit" value="&rarr;" className="factoryInput__arrow" />
       </div>
     </div>
   );

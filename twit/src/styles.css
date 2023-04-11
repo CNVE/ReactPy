@@ -33,7 +33,7 @@ body {
 button {
   background-color: white;
   color: black;
-
+  transition: 3s;
 }
 
 a {
@@ -75,7 +75,16 @@ form {
   color: white;
   border-radius: 20px;
   background-color: #04aaff;
-  cursor: pointer;
+  transition: 1s;
+}
+
+input:hover ~ .formBtn {
+  background-color: red;
+  transition-timing-function: ease-in-out;
+  border-width: 20%;
+  padding: 10px;
+  transition: 2s;
+  transform: translate(0%, 20%); /* 위치 이동 값 */
 }
 
 .cancelBtn {
@@ -139,17 +148,18 @@ form {
   color: white;
 }
 
-input:hover~ .authInput.authSubmit {
-  right: 0;
-  background-color: #04aaff;
-  height: 40px;
-  width: 100px;
-  padding: 10px 0px;
+input:hover~ .authInput.authSubmit  {
+  width: 100%;
+  background-color: red;
+  height: 32px;
+  padding: 10px;
+  margin-bottom: 10px;
   text-align: center;
-  border-radius: 20px;
+  border-radius: 30px;
   color: white;
-  transition-property: all
+  transition: all 2s;
 }
+
 
 .factoryInput__label {
   color: #04aaff;
@@ -283,11 +293,12 @@ input:hover~ .authInput.authSubmit {
   transition: 4s;
 }
 
+
 .authError {
   color: tomato;
   text-align: center;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .authSwitch {

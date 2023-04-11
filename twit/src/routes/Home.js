@@ -3,6 +3,8 @@ import Nweetfactory from "components/Nweetfactory";
 import { collection, onSnapshot, orderBy } from "firebase/firestore"; // firebase 버전 업데이트
 import { dbService } from "firebaseMain";
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
 
 const Home = ({ userObj, refreshUser }) => {
   console.log(userObj);
@@ -30,20 +32,30 @@ const Home = ({ userObj, refreshUser }) => {
   }, []);
 
   return (
+    <motion.div
+    /* 2. 원하는 애니메이션으로 jsx를 감싸준다 */
+         initial={{opacity: 0}}
+         animate={{opacity: 1}}
+         exit={{opacity: 0}}
+         >
     <div className="container">
       {/* userObj라는 props값 전달 */}
       <Nweetfactory userObj={userObj} />
       <div style={{ marginTop: 30 }}>
-        {twits.map((nweet) => (
-          <Nweet
-            key={nweet.id}
-            nweetObj={nweet}
-            isOwner={nweet.creatorId === userObj.uid}
-            userObj={userObj}
-          />
-        ))}
+          <div>
+            {twits.map((nweet) => (
+              <Nweet
+                key={nweet.id}
+                nweetObj={nweet}
+                isOwner={nweet.creatorId === userObj.uid}
+                userObj={userObj}
+              />
+            ))}
+          </div>
       </div>
     </div>
+    </motion.div>
   );
 };
+
 export default Home;

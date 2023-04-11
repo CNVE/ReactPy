@@ -6,17 +6,78 @@ import {
   faReact,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faPowerOff, faUser } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
 // Home과 Profile를 눌렀을 때 Realtime 처리 오류 => react-router-dom 과 react의 충돌 => "npm i react-router-dom@5.3.3"으로 업데이트 해결
-const Navigation = ({ userObj }) => (
+
+
+const Navigation = ({ userObj }) => {
+  const boxVariants = {
+    out: {
+      y: -100,
+    },
+    in: {
+      y: 0,
+      transition: {
+        duration: 0.6,
+        // first child는 parent가 나타나고 0.5s 후에 나타난다. 
+        delayChildren: 1,
+        // first child의 sibling child는 0.5s의 간격을 두고 나타난다
+        staggerChildren: 0.5,
+				// staggerChildren이 없다면 
+				//모든 child가 parent가 나타나고0.5s 후 동시에 나타난다. 
+      },
+    },
+  };
+
+  const iconVariants = {
+    out: {
+      x: -600, // translateX(-600)
+    },
+    in: {
+      x: 0
+    },
+  };
+
+  const iconVariantsv2 = {
+    out: {
+      x: -600, // translateX(-600)
+    },
+    in: {
+      x: 0,
+    },
+  };
+
+  const iconVariantsv3 = {
+    out: {
+      x: -600, // translateX(-600)
+    },
+    in: {
+      x: 100,
+    },
+  };
+ 
+  return (
   <nav>
-    <ul style={{ display: "flex", justifyContent: "center", marginTop: 50, }}>
-      <li>
+    <motion.ul variants={boxVariants} initial="out" animate="in" style={{ display: "flex", justifyContent: "center", marginTop: 50, }}>
+      <motion.li
+        role="img"
+        aria-labelledby="magic wand"
+        variants={iconVariants}
+				// parent의 initial, animate를 그대로 상속받기 때문에 
+				// 속성을 입력하지 않아도된다. 
+      >
         <Link to="/" style={{ marginRight: 10 }}>
           <FontAwesomeIcon icon={faTwitter} color={"#04AAFF"} size="2x" />
         </Link>
-      </li>
-      <li>
+      </motion.li>
+      <motion.li
+        role="img"
+        aria-labelledby="magic wand"
+        variants={iconVariantsv2}
+				// parent의 initial, animate를 그대로 상속받기 때문에 
+				// 속성을 입력하지 않아도된다. 
+      >
         <Link
           to="/profile"
           style={{
@@ -30,9 +91,24 @@ const Navigation = ({ userObj }) => (
           <FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x" />
           <span style={{ marginTop: 10 }}>{userObj.displayName}</span>
         </Link>
-      </li>
-    </ul>
-  </nav>
-);
+      </motion.li>
+      
+      <motion.li
+        role="img"
+        aria-labelledby="magic wand"
+        variants={iconVariantsv3}
+				// parent의 initial, animate를 그대로 상속받기 때문에 
+				// 속성을 입력하지 않아도된다. 
+      >
+        <Link to="/" style={{ marginRight: 10 }}>
+          <FontAwesomeIcon icon={faPowerOff} color={"#04AAFF"} size="2x" />
+          <p style={{  }}>Log Out</p>
+        </Link>
+      </motion.li>
+
+
+    </motion.ul>
+  </nav>); 
+  };
 
 export default Navigation;

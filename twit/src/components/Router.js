@@ -4,6 +4,9 @@ import Profile from "routes/Profile";
 import Auth from "../routes/Auth";
 import Home from "../routes/Home";
 import Navigation from "./Navigation";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { AnimatePresence } from "framer-motion";
+
 
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
   //console.log(userObj);
@@ -11,6 +14,7 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
     <Router>
       {isLoggedIn && <Navigation userObj={userObj} />}
       <Switch>
+      <AnimatePresence>
         <>
           {isLoggedIn ? (
             <div
@@ -36,6 +40,7 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
             </Route>
           )}
         </>
+        </AnimatePresence>
       </Switch>
     </Router>
   );
