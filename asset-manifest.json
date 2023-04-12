@@ -1,13 +1,21 @@
 {
   "files": {
-    "main.css": "/ReactPy/static/css/main.ff37f1a6.css",
-    "main.js": "/ReactPy/static/js/main.45a78a6a.js",
+    "main.css": "/ReactPy/static/css/main.ba4063b3.css",
+    "main.js": "/ReactPy/static/js/main.2b637374.js",
+    "static/media/Lora-MediumItalic.woff": "/ReactPy/static/media/Lora-MediumItalic.3e065aefd518b70505ea.woff",
+    "static/media/Lora-SemiBoldItalic.woff": "/ReactPy/static/media/Lora-SemiBoldItalic.273c65782ea214a95235.woff",
+    "static/media/Lora-BoldItalic.woff": "/ReactPy/static/media/Lora-BoldItalic.22b38ac65f1b14859ae3.woff",
+    "static/media/Lora-Italic.woff": "/ReactPy/static/media/Lora-Italic.210189ec6d39d7825f6f.woff",
+    "static/media/Lora-SemiBold.woff": "/ReactPy/static/media/Lora-SemiBold.619f56d69464db5d759e.woff",
+    "static/media/Lora-Medium.woff": "/ReactPy/static/media/Lora-Medium.5bfc5ad3f83e1f9e6ec9.woff",
+    "static/media/Lora-Bold.woff": "/ReactPy/static/media/Lora-Bold.7053b5421c1dcdf0c132.woff",
+    "static/media/Lora-Regular.woff": "/ReactPy/static/media/Lora-Regular.d9a47e0c4850824c0c76.woff",
     "index.html": "/ReactPy/index.html",
-    "main.ff37f1a6.css.map": "/ReactPy/static/css/main.ff37f1a6.css.map",
-    "main.45a78a6a.js.map": "/ReactPy/static/js/main.45a78a6a.js.map"
+    "main.ba4063b3.css.map": "/ReactPy/static/css/main.ba4063b3.css.map",
+    "main.2b637374.js.map": "/ReactPy/static/js/main.2b637374.js.map"
   },
   "entrypoints": [
-    "static/css/main.ff37f1a6.css",
-    "static/js/main.45a78a6a.js"
+    "static/css/main.ba4063b3.css",
+    "static/js/main.2b637374.js"
   ]
 }
