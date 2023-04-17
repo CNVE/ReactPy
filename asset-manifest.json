@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ReactPy/static/css/main.ba4063b3.css",
-    "main.js": "/ReactPy/static/js/main.2b637374.js",
+    "main.js": "/ReactPy/static/js/main.61225562.js",
     "static/media/Lora-MediumItalic.woff": "/ReactPy/static/media/Lora-MediumItalic.3e065aefd518b70505ea.woff",
     "static/media/Lora-SemiBoldItalic.woff": "/ReactPy/static/media/Lora-SemiBoldItalic.273c65782ea214a95235.woff",
     "static/media/Lora-BoldItalic.woff": "/ReactPy/static/media/Lora-BoldItalic.22b38ac65f1b14859ae3.woff",
@@ -12,10 +12,10 @@
     "static/media/Lora-Regular.woff": "/ReactPy/static/media/Lora-Regular.d9a47e0c4850824c0c76.woff",
     "index.html": "/ReactPy/index.html",
     "main.ba4063b3.css.map": "/ReactPy/static/css/main.ba4063b3.css.map",
-    "main.2b637374.js.map": "/ReactPy/static/js/main.2b637374.js.map"
+    "main.61225562.js.map": "/ReactPy/static/js/main.61225562.js.map"
   },
   "entrypoints": [
     "static/css/main.ba4063b3.css",
-    "static/js/main.2b637374.js"
+    "static/js/main.61225562.js"
   ]
 }
