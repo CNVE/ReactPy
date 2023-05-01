@@ -65,13 +65,15 @@ const Navigation = ({ userObj, refreshUser }) => {
       x: -600, // translateX(-600)
     },
     in: {
-      x: 100,
+      x: 0,
     },
   };
  
   return (
-  <nav>
-    <motion.ul variants={boxVariants} initial="out" animate="in" style={{ display: "flex", justifyContent: "center", marginTop: 50, }}>
+    
+  <nav className="wrapper">
+    <motion.ul variants={boxVariants} initial="out" animate="in" style={{ display: "flex", justifyContent: "center", alignContent: "center" }}>
+    <div>
       <motion.li
         role="img"
         aria-labelledby="magic wand"
@@ -83,6 +85,8 @@ const Navigation = ({ userObj, refreshUser }) => {
           <FontAwesomeIcon icon={faTwitter} color={"#04AAFF"} size="2x" />
         </Link>
       </motion.li>
+      </div>
+      <div>
       <motion.li
         role="img"
         aria-labelledby="magic wand"
@@ -104,7 +108,8 @@ const Navigation = ({ userObj, refreshUser }) => {
           <span style={{ marginTop: 10 }}>{userObj.displayName}</span>
         </Link>
       </motion.li>
-      
+      </div>
+      <div>
       <motion.li
         role="img"
         aria-labelledby="magic wand"
@@ -112,14 +117,20 @@ const Navigation = ({ userObj, refreshUser }) => {
 				// parent의 initial, animate를 그대로 상속받기 때문에 
 				// 속성을 입력하지 않아도된다. 
       >
-        <Link to="/" style={{ marginRight: 10 }} >
+        <Link to="/" style={{  marginLeft: 25,
+            display: "flex",
+            flexDirection: "column",
+            fontSize: 12, }} >
           <FontAwesomeIcon icon={faPowerOff} color={"#04AAFF"} size="2x" onClick = {onLogOutClick} />
-          <p style={{  }}>EXIT</p>
+          <p style={{marginTop: 10}}>EXIT</p>
         </Link>
       </motion.li>
-
+      </div>
     </motion.ul>
-  </nav>); 
+  </nav>
+  
+  
+  ); 
   };
 
 export default Navigation;

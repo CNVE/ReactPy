@@ -54,7 +54,7 @@ const Auth = () => {
         style={{ marginBottom: 20, marginTop: 100 }}
       />
       <motion.div className="titlel" style={{marginBottom: 20, fontSize :30}} 
-       >Pocheoltech_Chat</motion.div>
+       >Pocheol_Recruit</motion.div>
       <Authform />
       <div className="authBtns">
         {/* 다른 매체를 이용한 로그인수단 */}
