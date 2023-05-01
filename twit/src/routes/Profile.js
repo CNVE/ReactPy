@@ -11,6 +11,7 @@ import {
 import { authService, dbService } from "firebaseMain";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom"; //react-router-dom의 함수 or Router.js파일에 Redirect 함수를 통해 로그아웃 후 Home 복귀
+import { motion } from "framer-motion";
 
 const Profile = ({ refreshUser, userObj }) => {
   const history = useHistory();
@@ -58,6 +59,12 @@ const Profile = ({ refreshUser, userObj }) => {
   };
 
   return (
+    <motion.div
+    /* 2. 원하는 애니메이션으로 jsx를 감싸준다 */
+         initial={{opacity: 0}}
+         animate={{opacity: 1}}
+         exit={{opacity: 0}}
+         >
     <div className="container">
       <form onSubmit={onSubmit} className="profileForm">
         <input
@@ -83,6 +90,7 @@ const Profile = ({ refreshUser, userObj }) => {
       <div className="factoryInput__container">
       </div>
     </div>
+    </motion.div>
   );
 };
 export default Profile;

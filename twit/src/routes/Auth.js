@@ -12,8 +12,13 @@ import {
   faTwitter,
   faGoogle,
   faGithub,
+  faApple,
 } from "@fortawesome/free-brands-svg-icons";
 import "Fonts/Fonts.css";
+import { motion } from "framer-motion";
+import AuthNav from "./AuthNav";
+import { faAlignCenter, faSchool } from "@fortawesome/free-solid-svg-icons";
+
 
 const Auth = () => {
   const onSocialClick = async (event) => {
@@ -31,16 +36,25 @@ const Auth = () => {
     const data = await signInWithPopup(authService, provider); // if문 실행 뒤 data 변수에 구글인지 깃헙인지 로그인 서비스에 알려줌
     console.log(data);
   };
+
+  
   return (
  
-    <div className="authContainer">
+    <motion.div className="authContainer" initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }}
+    transition={{
+      duration: 1.5,
+      delay: 0.5,
+      ease: [0, 0.71, 0.2, 1.01]
+    }}  >
+      <AuthNav />
       <FontAwesomeIcon
-        icon={faTwitter}
-        color={"#04AAFF"}
+        icon={faSchool}
+        color={"171717"}
         size="3x"
-        style={{ marginBottom: 20 }}
+        style={{ marginBottom: 20, marginTop: 100 }}
       />
-      <div className="titlel" style={{marginBottom: 20, fontSize :30}}>Twitter</div>
+      <motion.div className="titlel" style={{marginBottom: 20, fontSize :30}} 
+       >Pocheoltech_Chat</motion.div>
       <Authform />
       <div className="authBtns">
         {/* 다른 매체를 이용한 로그인수단 */}
@@ -51,7 +65,7 @@ const Auth = () => {
           Continue with Github <FontAwesomeIcon icon={faGithub} />
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default Auth;

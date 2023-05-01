@@ -53,3 +53,10 @@
     font-weight: 100;
     src: url("./Lora-SemiBoldItalic.woff") format("woff");
   }
+
+  @font-face {
+    font-family: "Human";
+    font-style: normal;
+    font-weight: 100;
+    src: url("./Human.woff") format("woff");
+  }

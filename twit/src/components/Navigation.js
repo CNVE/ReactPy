@@ -8,10 +8,22 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faPowerOff, faUser } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import { useHistory } from "react-router-dom";
+import { authService, dbService } from "firebaseMain";
 // Home과 Profile를 눌렀을 때 Realtime 처리 오류 => react-router-dom 과 react의 충돌 => "npm i react-router-dom@5.3.3"으로 업데이트 해결
 
 
-const Navigation = ({ userObj }) => {
+const Navigation = ({ userObj, refreshUser }) => {
+
+  const history = useHistory();
+  const onLogOutClick = () => {
+    authService.signOut(); // Service LogOut을 할 때
+    history.push("/"); //기본 홈으로 돌아가기
+    window.confirm("re");
+    refreshUser();
+  };
+  
+
   const boxVariants = {
     out: {
       y: -100,
@@ -100,12 +112,11 @@ const Navigation = ({ userObj }) => {
 				// parent의 initial, animate를 그대로 상속받기 때문에 
 				// 속성을 입력하지 않아도된다. 
       >
-        <Link to="/" style={{ marginRight: 10 }}>
-          <FontAwesomeIcon icon={faPowerOff} color={"#04AAFF"} size="2x" />
-          <p style={{  }}>Log Out</p>
+        <Link to="/" style={{ marginRight: 10 }} >
+          <FontAwesomeIcon icon={faPowerOff} color={"#04AAFF"} size="2x" onClick = {onLogOutClick} />
+          <p style={{  }}>EXIT</p>
         </Link>
       </motion.li>
-
 
     </motion.ul>
   </nav>); 

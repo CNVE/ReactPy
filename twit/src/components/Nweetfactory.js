@@ -6,9 +6,11 @@ import { v4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
+
 const Nweetfactory = ({ userObj }) => {
   const [twit, setTwit] = useState(""); //text 입력란 제어
   const [fileURL, setFileURL] = useState("");
+
   const onSubmit = async (event) => {
     event.preventDefault();
     let attch = "";
@@ -17,7 +19,7 @@ const Nweetfactory = ({ userObj }) => {
       const response = await uploadString(fileRef, fileURL, "data_url");
       attch = await getDownloadURL(response.ref);
     }
-
+    if ( twit !== "" ){ // twit 값이 없다면 Submit 하지 못하도록 if문 배치
     const docRef = addDoc(collection(dbService, "Twit"), {
       text: twit,
       createAt: Date.now(),
@@ -28,6 +30,11 @@ const Nweetfactory = ({ userObj }) => {
     setTwit(""); // Submit시 text란 비우기 But 동작 안함
     setFileURL("");
     console.log("Document written with ID: ", (await docRef).id);
+    }
+    else{
+      console.log("Twit is not available");
+      window.alert("Error: Please Typing") // 알림창 구현 하였으나 디테일 필요 (애니메이션, css 등등)
+    }
   };
 
   const onChange = (event) => {
@@ -55,6 +62,10 @@ const Nweetfactory = ({ userObj }) => {
   const onClearPhto = () => setFileURL(""); // 사진 지우기
 
   return (
+
+    <div ClassName="container">
+      {/* 폰트 사이즈 키우기 */}
+      <div style={{ marginTop: -50, marginBottom: 20, textAlign: "center" }}>{userObj.displayName}님 반갑습니다!</div> 
     <form onSubmit={onSubmit} className="factoryForm">
       <div className="factoryInput__container">
         <input
@@ -96,6 +107,7 @@ const Nweetfactory = ({ userObj }) => {
         </div>
       )}
     </form>
+    </div>
   );
 };
 

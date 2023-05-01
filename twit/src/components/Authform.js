@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const Authform = () => {
   const [email, setEmail] = useState(""); // 아이디 변경 감지

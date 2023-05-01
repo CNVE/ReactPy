@@ -12,7 +12,7 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
   //console.log(userObj);
   return (
     <Router>
-      {isLoggedIn && <Navigation userObj={userObj} />}
+      {isLoggedIn && <Navigation userObj={userObj} refreshUser={refreshUser} />}
       <Switch>
       <AnimatePresence>
         <>
