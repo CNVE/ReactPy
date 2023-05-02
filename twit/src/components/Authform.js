@@ -16,6 +16,9 @@ const Authform = () => {
     event.preventDefault(); // Submit의 기본 동작을 억제(기본 동작: Submit시 Page Refresh)
     try {
       let signdata, logdata; //이메일 or 비밀번호를 저장
+      if (signdata.endsWith('fdafds.com')){
+        alert("Error");
+      }
       const auth = getAuth(); //Firebase 업데이트로 인해 달라진 문법
       if (newAccount) {
         signdata = await createUserWithEmailAndPassword(auth, email, password);
@@ -27,6 +30,7 @@ const Authform = () => {
       //에러시
       setError(error.message); // setError조정하여 error message 제어
     }
+  
   };
 
   const onChange = (event) => {

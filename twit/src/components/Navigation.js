@@ -17,10 +17,13 @@ const Navigation = ({ userObj, refreshUser }) => {
 
   const history = useHistory();
   const onLogOutClick = () => {
-    authService.signOut(); // Service LogOut을 할 때
-    history.push("/"); //기본 홈으로 돌아가기
-    window.confirm("re");
-    refreshUser();
+    if (window.confirm("You want EXIT?")) {
+      authService.signOut(); // Service LogOut을 할 때
+      history.push("/"); //기본 홈으로 돌아가기
+      refreshUser();  
+    } else {
+
+    }
   };
   
 
@@ -65,24 +68,13 @@ const Navigation = ({ userObj, refreshUser }) => {
       x: -600, // translateX(-600)
     },
     in: {
-      x: 100,
+      x: 0,
     },
   };
  
   return (
   <nav>
-    <motion.ul variants={boxVariants} initial="out" animate="in" style={{ display: "flex", justifyContent: "center", marginTop: 50, }}>
-      <motion.li
-        role="img"
-        aria-labelledby="magic wand"
-        variants={iconVariants}
-				// parent의 initial, animate를 그대로 상속받기 때문에 
-				// 속성을 입력하지 않아도된다. 
-      >
-        <Link to="/" style={{ marginRight: 10 }}>
-          <FontAwesomeIcon icon={faTwitter} color={"#04AAFF"} size="2x" />
-        </Link>
-      </motion.li>
+    <motion.ul variants={boxVariants} initial="out" animate="in" style={{ display: "flex", justifyContent: "center", alignContent: "center" }}>
       <motion.li
         role="img"
         aria-labelledby="magic wand"
@@ -93,7 +85,7 @@ const Navigation = ({ userObj, refreshUser }) => {
         <Link
           to="/profile"
           style={{
-            marginLeft: 10,
+            marginRight: 30,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -104,7 +96,19 @@ const Navigation = ({ userObj, refreshUser }) => {
           <span style={{ marginTop: 10 }}>{userObj.displayName}</span>
         </Link>
       </motion.li>
-      
+
+      <motion.li
+        role="img"
+        aria-labelledby="magic wand"
+        variants={iconVariants}
+				// parent의 initial, animate를 그대로 상속받기 때문에 
+				// 속성을 입력하지 않아도된다. 
+      >
+        <Link to="/" style={{  }}>
+          <FontAwesomeIcon icon={faTwitter} color={"#04AAFF"} size="2x" />
+        </Link>
+      </motion.li>
+
       <motion.li
         role="img"
         aria-labelledby="magic wand"
@@ -112,9 +116,12 @@ const Navigation = ({ userObj, refreshUser }) => {
 				// parent의 initial, animate를 그대로 상속받기 때문에 
 				// 속성을 입력하지 않아도된다. 
       >
-        <Link to="/" style={{ marginRight: 10 }} >
+        <Link to="/" style={{  marginLeft: 30,
+            display: "flex",
+            flexDirection: "column",
+            fontSize: 12,}} >
           <FontAwesomeIcon icon={faPowerOff} color={"#04AAFF"} size="2x" onClick = {onLogOutClick} />
-          <p style={{  }}>EXIT</p>
+          <p style={{marginTop: 10}}>EXIT</p>
         </Link>
       </motion.li>
 
