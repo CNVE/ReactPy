@@ -17,10 +17,10 @@ import {
 import "Fonts/Fonts.css";
 import { motion } from "framer-motion";
 import { faAlignCenter, faSchool } from "@fortawesome/free-solid-svg-icons";
-import AuthBanner from "./AuthBanner";
+import AdminAuth from "components/AdminAuth";
 
 
-const Auth = () => {
+const AdminPanal = () => {
   const onSocialClick = async (event) => {
     const {
       currentTarget: { name },
@@ -46,7 +46,6 @@ const Auth = () => {
       delay: 0.5,
       ease: [0, 0.71, 0.2, 1.01]
     }}  >
-      <AuthBanner />
       <FontAwesomeIcon
         icon={faSchool}
         color={"171717"}
@@ -54,21 +53,12 @@ const Auth = () => {
         style={{ marginBottom: 20, marginTop: 100 }}
       />
       <motion.div className="titlel" style={{marginBottom: 20, fontSize :30}} 
-       >Pocheol_Recruit</motion.div>
-      <Authform />
-      <div className="authBtns">
-        {/* 다른 매체를 이용한 로그인수단 */}
-        <button name="Google" onClick={onSocialClick} className="authBtn">
-          Continue with Google <FontAwesomeIcon icon={faGoogle} />
-        </button>
-        <button name="Github" onClick={onSocialClick} className="authBtn">
-          Continue with Github <FontAwesomeIcon icon={faGithub} />
-        </button>
-      </div>
+       >Pocheol_Admin</motion.div>
+      <AdminAuth />
     </motion.div>
   );
 };
-export default Auth;
+export default AdminPanal;
 
 //대문자 소문자 구분 제발 하자
 //구글과 깃헙 연동 도중 name값 앞에 대문자 빼먹어서 고치는데 2시간 걸렸다.

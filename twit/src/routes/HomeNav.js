@@ -1,6 +1,6 @@
 import react from "react"
 
-const AuthNav = () => {
+const HomeNav = () => {
     return(
         <nav className = "wrapper">
             <div>div1</div>
@@ -12,4 +12,4 @@ const AuthNav = () => {
     );
 };
 
-export default AuthNav;
+export default HomeNav;
