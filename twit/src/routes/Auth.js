@@ -17,7 +17,8 @@ import {
 import "Fonts/Fonts.css";
 import { motion } from "framer-motion";
 import { faAlignCenter, faSchool } from "@fortawesome/free-solid-svg-icons";
-import AuthBanner from "./AuthBanner";
+import newAccount, {toggleAccount} from '../components/Authform';
+
 
 
 const Auth = () => {
@@ -32,7 +33,7 @@ const Auth = () => {
     } else if (name === "Github") {
       // 아니고 만약 이름이 Github이라면
       provider = new GithubAuthProvider(); //provider에 GithubAuthProvider 대입
-    }
+    } 
     const data = await signInWithPopup(authService, provider); // if문 실행 뒤 data 변수에 구글인지 깃헙인지 로그인 서비스에 알려줌
     console.log(data);
   };
@@ -46,25 +47,29 @@ const Auth = () => {
       delay: 0.5,
       ease: [0, 0.71, 0.2, 1.01]
     }}  >
-      <AuthBanner />
-      <FontAwesomeIcon
+      <box className = "News">
+        <FontAwesomeIcon
         icon={faSchool}
         color={"171717"}
         size="3x"
-        style={{ marginBottom: 20, marginTop: 100 }}
+        className="titlel"
       />
-      <motion.div className="titlel" style={{marginBottom: 20, fontSize :30}} 
-       >Pocheol_Recruit</motion.div>
+      <motion.div className="titlel_SignM" 
+       >{newAccount ? "Sign in" : "Create Account"}</motion.div>
+       <motion.div className="titlel_Welcome" style={{fontSize : 15}} 
+       >Welcome to Pocheoltech</motion.div>
       <Authform />
       <div className="authBtns">
         {/* 다른 매체를 이용한 로그인수단 */}
         <button name="Google" onClick={onSocialClick} className="authBtn">
-          Continue with Google <FontAwesomeIcon icon={faGoogle} />
+         <FontAwesomeIcon icon={faGoogle} size="2x" />
         </button>
         <button name="Github" onClick={onSocialClick} className="authBtn">
-          Continue with Github <FontAwesomeIcon icon={faGithub} />
+          <FontAwesomeIcon icon={faGithub} size="2x" />
         </button>
       </div>
+      </box>
+      
     </motion.div>
   );
 };

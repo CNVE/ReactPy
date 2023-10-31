@@ -7,6 +7,7 @@ import Navigation from "./Navigation";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { AnimatePresence } from "framer-motion";
 import AdminPanal from "../routes/AdminPanal"
+import Main from "../routes/Main"
 
 
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
@@ -36,14 +37,16 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
               </Route>
             </div>
           ) : (
-            <Route exact path="/">
+            <div>
+            <Route exact path="/Auth">
               <Auth />
             </Route>
+            <Route exact path="/">
+              <Main />
+            </Route>
+            </div>
           )}
         </>
-        <Route exact path="/admin">
-              <AdminPanal />
-            </Route>
         </AnimatePresence>
       </Switch>
     </Router>

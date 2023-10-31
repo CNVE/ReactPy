@@ -49,7 +49,7 @@ const Authform = () => {
 
   return (
     <>
-      <form onSubmit={onSubmit} className="container">
+      <form onSubmit={onSubmit}>
         {/* 이메일 입력란 */}
         <input
           name="email"
@@ -74,7 +74,7 @@ const Authform = () => {
         {/* Submit button의 value에 newAccount를 이용한 로그인 구분 */}
         <input
           type="submit"
-          className="authInput authSubmit"
+          className="authSubmit authInput"
           style = {{ textAlign: "center" }}
           value={newAccount ? "Create Account" : "Log In"}
         />

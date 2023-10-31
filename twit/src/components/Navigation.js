@@ -75,9 +75,6 @@ const Navigation = ({ userObj, refreshUser }) => {
  
   return (
   <nav>
-    <ul>
-      <HomeNav />
-    </ul>
     <motion.ul variants={boxVariants} initial="out" animate="in">
       <motion.li
         role="img"

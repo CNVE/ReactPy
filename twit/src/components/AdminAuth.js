@@ -16,8 +16,8 @@ import {
       event.preventDefault(); // Submit의 기본 동작을 억제(기본 동작: Submit시 Page Refresh)
       try {
         let signdata, logdata; //이메일 or 비밀번호를 저장
-        if (signdata.endsWith('fdafds.com')){
-          alert("Error");
+        if (signdata != signdata.endsWith('gmail.com')){ // signdata의 마지막 부분이 gmail.com 으로 끝나지 않을시 
+          alert("Error"); // 에러 도출
         }
         const auth = getAuth(); //Firebase 업데이트로 인해 달라진 문법
         if (newAccount) {
