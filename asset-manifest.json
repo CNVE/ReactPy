@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ReactPy/static/css/main.f031b349.css",
-    "main.js": "/ReactPy/static/js/main.2683e91d.js",
+    "main.css": "/ReactPy/static/css/main.f8e515ff.css",
+    "main.js": "/ReactPy/static/js/main.960c1552.js",
     "static/media/Human.woff": "/ReactPy/static/media/Human.b2905cdcedb197d21cba.woff",
     "static/media/Lora-MediumItalic.woff": "/ReactPy/static/media/Lora-MediumItalic.3e065aefd518b70505ea.woff",
     "static/media/Lora-SemiBoldItalic.woff": "/ReactPy/static/media/Lora-SemiBoldItalic.273c65782ea214a95235.woff",
@@ -12,11 +12,11 @@
     "static/media/Lora-Bold.woff": "/ReactPy/static/media/Lora-Bold.7053b5421c1dcdf0c132.woff",
     "static/media/Lora-Regular.woff": "/ReactPy/static/media/Lora-Regular.d9a47e0c4850824c0c76.woff",
     "index.html": "/ReactPy/index.html",
-    "main.f031b349.css.map": "/ReactPy/static/css/main.f031b349.css.map",
-    "main.2683e91d.js.map": "/ReactPy/static/js/main.2683e91d.js.map"
+    "main.f8e515ff.css.map": "/ReactPy/static/css/main.f8e515ff.css.map",
+    "main.960c1552.js.map": "/ReactPy/static/js/main.960c1552.js.map"
   },
   "entrypoints": [
-    "static/css/main.f031b349.css",
-    "static/js/main.2683e91d.js"
+    "static/css/main.f8e515ff.css",
+    "static/js/main.960c1552.js"
   ]
 }
