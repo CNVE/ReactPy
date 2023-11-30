@@ -65,7 +65,7 @@ const Nweetfactory = ({ userObj }) => {
 
     <div ClassName="container">
       {/* 폰트 사이즈 키우기 */}
-      <div style={{ marginTop: -50, marginBottom: 20, textAlign: "center" }}>{userObj.displayName}님 반갑습니다!</div> 
+      <div style={{ marginTop: -50, marginBottom: 20, textAlign: "center", color: "white" }}>{userObj.displayName}님 반갑습니다!</div> 
     <form onSubmit={onSubmit} className="factoryForm">
       <div className="factoryInput__container">
         <input

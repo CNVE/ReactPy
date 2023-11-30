@@ -1,7 +1,7 @@
 import {
     createUserWithEmailAndPassword,
     getAuth,
-    signInWithEmailAndPassword,
+    signInWithEmailAndPassword,signInAnonymously,
   } from "firebase/auth";
   import React, { useState } from "react";
   import { motion } from "framer-motion";
@@ -23,7 +23,10 @@ import {
         if (newAccount) {
           signdata = await createUserWithEmailAndPassword(auth, email, password);
         } else {
-          logdata = await signInWithEmailAndPassword(auth, email, password);
+          if(email === "guest@example.com" && password === "guestpass"){logdata = await signInAnonymously(auth);}
+          else {
+            logdata = await signInWithEmailAndPassword(auth, email, password);
+          }
         }
         console.log("Sign?", signdata, "Log?", logdata); // 로그인시 콘솔창에 포시
       } catch (error) {
@@ -47,6 +50,17 @@ import {
       }
     };
   
+    const loginAsGuest = async () => {
+      try {
+        const auth = getAuth();
+        const logdata = await signInAnonymously(auth); // Guest login
+    
+        console.log("Guest Login Successful", logdata);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
     return (
       <>
         <form onSubmit={onSubmit} className="container">
@@ -64,7 +78,7 @@ import {
           <input
             name="password"
             type="password"
-            placeholder="password"
+            placeholder="Hi"
             required
             value={password}
             onChange={onChange}
@@ -78,6 +92,14 @@ import {
             style = {{ textAlign: "center" }}
             value={"Welcome " + email}
           />
+          <input
+          type="submit"
+          className="authInput authSubmit"
+          style={{ textAlign: "center" }}
+          onClick={loginAsGuest}
+          value={"Guest Login"}
+          />
+          
           {error && <span className="authError">{error}</span>}
           {/* 에러 메시지 if 문을 이용하여 한글 메시지 띄우기 */}
         </form>

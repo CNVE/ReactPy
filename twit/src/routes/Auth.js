@@ -21,6 +21,7 @@ import newAccount, {toggleAccount} from '../components/Authform';
 
 
 
+
 const Auth = () => {
   const onSocialClick = async (event) => {
     const {

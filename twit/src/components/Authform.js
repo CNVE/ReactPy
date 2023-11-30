@@ -1,7 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   getAuth,
-  signInWithEmailAndPassword,
+  signInWithEmailAndPassword,signInAnonymously
 } from "firebase/auth";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
@@ -23,7 +23,10 @@ const Authform = () => {
       if (newAccount) {
         signdata = await createUserWithEmailAndPassword(auth, email, password);
       } else {
-        logdata = await signInWithEmailAndPassword(auth, email, password);
+        if(email === "guest@example.com" && password === "guestpass"){logdata = await signInAnonymously(auth);}
+        else {
+          logdata = await signInWithEmailAndPassword(auth, email, password);
+        }
       }
       console.log("Sign?", signdata, "Log?", logdata); // 로그인시 콘솔창에 포시
     } catch (error) {
@@ -47,11 +50,23 @@ const Authform = () => {
     }
   };
 
+  const loginAsGuest = async () => {
+    try {
+      const auth = getAuth();
+      const logdata = await signInAnonymously(auth); // Guest login
+  
+      console.log("Guest Login Successful", logdata);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   return (
     <>
       <form onSubmit={onSubmit}>
+        
         {/* 이메일 입력란 */}
-        <input
+        {/*<input
           name="email"
           type="text"
           placeholder="Email"
@@ -59,9 +74,9 @@ const Authform = () => {
           value={email}
           onChange={onChange}
           className="authInput"
-        />
+        />*/}
         {/* 비밀번호 입력란 */}
-        <input
+        {/*<input
           name="password"
           type="password"
           placeholder="password"
@@ -70,22 +85,33 @@ const Authform = () => {
           onChange={onChange}
           className="authInput"
           autoComplete="off"
-        />
+        />*/}
         {/* Submit button의 value에 newAccount를 이용한 로그인 구분 */}
-        <input
+        {/*<input
           type="submit"
           className="authSubmit authInput"
           style = {{ textAlign: "center" }}
           value={newAccount ? "Create Account" : "Log In"}
-        />
+        />*/}
         {error && <span className="authError">{error}</span>}
         {/* 에러 메시지 if 문을 이용하여 한글 메시지 띄우기 */}
+
       </form>
       {/* onClick 이벤트를 toggleAccount로 추가 */}
-      <span onClick={toggleAccount} className="authSwitch">
+      {/*
+      <span onClick={toggleAccount} className="authSwitch">*/}
         {/* 로그인과 회원가입을 toggleAccount로 추가한 onClick 이벤트로 변경 */}
-        {newAccount ? "Sign in" : "Create Account"}
-      </span>
+        {/*{newAccount ? "Sign in" : "Create Account"}
+      </span>*/}
+      <h2 style={{marginTop: 50}}>이메일이 부담일 것 같아 Guest 기능을 제작하였습니다.</h2>
+      <h2 style={{marginTop: 10}}>Guest 혹은 Google, Github 기능을 활용해주세요</h2>
+      <input
+          type="submit"
+          className="authInput authSubmit"
+          style={{ textAlign: "center", marginTop: 50, marginBottom: 10 }}
+          onClick={loginAsGuest}
+          value={"Guest Login"}
+          />
     </>
   );
 };

@@ -7,41 +7,71 @@ import { Link } from "react-router-dom";
 
 const Main = () => {
   return (
-    <motion.div className="authContainer" initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }}
-    transition={{
-      duration: 1.5,
-      delay: 0.5,
-      ease: [0, 0.71, 0.2, 1.01]
-    }}  >
+    <motion.div className="authContainer">
 
-      <motion.div className="titlel_Main">
-       Pocheoltech_Ask</motion.div>
-      
-      <motion.div className="Home_title">
-       Welcome to Pocheoltech Ask, I'm Admin</motion.div>
-
-       <motion.div className="Home_titleRight">
-         Hi ! How to use the App ?</motion.div>
-
-       <motion.div className="Home_title">
-       well, first i have to know you </motion.div>
-      
-       <motion.div className="Home_title">
-         Do you Come to PTAsk ? please sign up !</motion.div>
-
-         <motion.div className="Home_titleRight">
-         OK, I Follow you !!</motion.div>
-         <motion.div>
-      
-           
-        
+      <motion.div className="titlel_Main" initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 1.5,
+        delay:0.5,
+        ease: [0, 0.71, 0.2, 1.01]
+      }} >
+       Pocheoltech_Ask
+       Made By 김수현
        </motion.div>
       
-       <Link to="/Auth">
-             <button className="authBtnMain" style={{delay: 1}}>
-               Sign up & Log in
+      <motion.div className="Home_title" initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 1.5,
+        delay:1,
+        ease: [0, 0.71, 0.2, 1.01]
+      }} >
+       Welcome to Pocheoltech Ask, I'm Admin</motion.div>
+
+       <motion.div className="Home_titleRight" initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 1.5,
+        delay:1.5,
+        ease: [0, 0.71, 0.2, 1.01]
+      }} >
+         Hi ! How to use the App ?</motion.div>
+
+       <motion.div className="Home_title" initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 1.5,
+        delay:2,
+        ease: [0, 0.71, 0.2, 1.01]
+      }} >
+       well, first i have to know you </motion.div>
+      
+       <motion.div className="Home_title" initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 1.5,
+        delay:2.5,
+        ease: [0, 0.71, 0.2, 1.01]
+      }} >
+         Do you Come to PTAsk ? please sign up !</motion.div>
+
+         <motion.div className="Home_titleRight" initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 1.5,
+        delay:3,
+        ease: [0, 0.71, 0.2, 1.01]
+      }} >
+         OK, I Follow you !!</motion.div>
+
+      <motion.div initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 2,
+        delay:5,
+        ease: [0, 0.71, 0.2, 1.01]
+      }} >   
+         <Link to="/Auth">
+             <button className="authBtnMain">
+               Let's Start !
              </button>
            </Link>
+
+       </motion.div>
 
       
     </motion.div>

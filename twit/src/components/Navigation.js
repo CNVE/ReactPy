@@ -18,13 +18,9 @@ const Navigation = ({ userObj, refreshUser }) => {
 
   const history = useHistory();
   const onLogOutClick = () => {
-    if (window.confirm("You want EXIT?")) {
       authService.signOut(); // Service LogOut을 할 때
       history.push("/"); //기본 홈으로 돌아가기
       refreshUser();  
-    } else {
-
-    }
   };
   
 
@@ -94,7 +90,7 @@ const Navigation = ({ userObj, refreshUser }) => {
           }}
         >
           <FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x" />
-          <span style={{ marginTop: 10 }}>{userObj.displayName}</span>
+          <span style={{ marginTop: 10, color: "white"  }}>{userObj.displayName}</span>
         </Link>
       </motion.li>
 
@@ -122,7 +118,7 @@ const Navigation = ({ userObj, refreshUser }) => {
             flexDirection: "column",
             fontSize: 12,}} >
           <FontAwesomeIcon icon={faPowerOff} color={"#04AAFF"} size="2x" onClick = {onLogOutClick} />
-          <p style={{marginTop: 10}}>EXIT</p>
+          <p style={{marginTop: 10, color: "white"}}>EXIT</p>
         </Link>
       </motion.li>
 
